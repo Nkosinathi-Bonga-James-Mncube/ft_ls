@@ -1,19 +1,19 @@
-NAME = ls.a
+NAME = ft_ls.a
 
-SRC = ft_ls.c
-
-OBJ =ft_ls.o
+LIBFT = libft/libft.a
+SRC = ft_ls.c 
 
 all: $(NAME)
 
-$(NAME):
-		gcc -c -Wall -Wextra -Werror $(SRC) $(LIB)
-		ar rc $(NAME) $(OBJ)
-		ranlib $(NAME)
-
+$(NAME): 
+		make -C libft all
+		gcc $(SRC) -o ft_ls $(LIBFT)
 clean:
+	make -C libft clean
 	rm -f $(OBJ)
+
 fclean: clean
+	make -C libft fclean
 	rm -f $(NAME)
 
 re: fclean all
