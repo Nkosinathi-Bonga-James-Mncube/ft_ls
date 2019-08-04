@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:55:00 by nmncube           #+#    #+#             */
-/*   Updated: 2019/08/02 17:04:18 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/08/04 14:56:09 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,49 +14,49 @@
 #include <dirent.h>//if I remove this , the program doesnt work?
 #include "libft/libft.h"
 
-void ft_swap(char *s1 , char *s2)
+void ft_swap(char **s1 , char **s2)
 {
+	printf("Before : %s\n ", *s1);
 	char *temp;
-	temp = s1;
-	s1 = s2;
-	s2 = temp;
+	temp = *s1;
+	*s1 = *s2;
+	*s2 = temp;
+	printf("After : %s\n" , *s1);
+	printf("------\n");
 }
 
-int loop (char *arr, int low, int high)
+int loop(char **arr, char *hold ,int low,int high)
 {
-	int hold;
-	int j;
-	int i;
-
-	j = low;
-	i = (low - 1);
-	hold = arr[high];
-
-	while (j <= high - 1)
+	low = low -1;
+	while (arr[low] <= arr[high])
 	{
-		if (arr[j] <= hold)
-		{
-			i++;
-			ft_swap(&arr[i], &arr[j]);
-		}
+		if(arr[low] < hold)
+			low++;
+		if (arr[high] > 0 && arr[high] > hold)
+			high--;
+	
+		ft_swap(&arr[low], &arr[high]);
 	}
-	ft_swap(&arr[i + 1] , &arr[high]);
-	return (i + 1);
+	ft_swap(&arr[low] , &arr[high]);
+	return(low);
 }
-	
-void ft_quick_sort(char *arr, int low, int high)
+
+void ft_quick_sort(char **arr,int low, int high)
 {
-	int value;
-	
-	value = 0;
+	char *hold;
+   	int hold2;
+	//printf("im here");
 	if (low < high)
 	{
-		value = loop(arr, low,high);
-		ft_quick_sort(arr, low, value - 1);			
-		ft_quick_sort(arr, value + 1, high);
+		
+		//printf("im here2");
+		hold = arr[high];
+		//printf("%s" , hold);
+		hold2 = loop( arr ,hold,low, high);
+		ft_quick_sort(arr, low, hold2 - 1);
+		ft_quick_sort(arr, hold2 + 1 , high);
 	}
 }
-
 void	ft_ls(int total)
 {
 	DIR				*dir;
@@ -83,6 +83,12 @@ void	ft_ls(int total)
 			k++;
 		}
 	}
+	ft_quick_sort(arr,0,total -1);//issue here?
+	/*while (j < total)
+	{
+		printf("%s \t" , arr[j]);
+		j++;
+	}*/
 }
 
 int		ft_count(void)
@@ -105,9 +111,10 @@ int		main(int argc, char**argv)
 {
 	static int total;
 
-	//printf("im here");
+	//printf("zZz");
 	if (argc == 2 && argv[1][0] == 'l' && argv[1][1] == 's')
 	{
+		//printf("inside");
 		total = total + ft_count();
 		ft_ls(total);
 	}
