@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 11:03:18 by nmncube           #+#    #+#             */
-/*   Updated: 2019/07/31 12:55:57 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/08/05 14:52:54 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@
 #include <stdlib.h>
 
 void ft_ls(char *s1);
-
+void ft_bubble_sort(char **arr , int n);
 #endif

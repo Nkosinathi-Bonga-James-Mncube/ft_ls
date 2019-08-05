@@ -1,7 +1,7 @@
 NAME = ft_ls.a
 
 LIBFT = libft/libft.a
-SRC = ft_ls.c 
+SRC = ft_ls.c
 
 all: $(NAME)
 

@@ -6,57 +6,14 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:55:00 by nmncube           #+#    #+#             */
-/*   Updated: 2019/08/04 14:56:09 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/08/05 16:48:47 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 #include <dirent.h>//if I remove this , the program doesnt work?
 #include "libft/libft.h"
-
-void ft_swap(char **s1 , char **s2)
-{
-	printf("Before : %s\n ", *s1);
-	char *temp;
-	temp = *s1;
-	*s1 = *s2;
-	*s2 = temp;
-	printf("After : %s\n" , *s1);
-	printf("------\n");
-}
-
-int loop(char **arr, char *hold ,int low,int high)
-{
-	low = low -1;
-	while (arr[low] <= arr[high])
-	{
-		if(arr[low] < hold)
-			low++;
-		if (arr[high] > 0 && arr[high] > hold)
-			high--;
-	
-		ft_swap(&arr[low], &arr[high]);
-	}
-	ft_swap(&arr[low] , &arr[high]);
-	return(low);
-}
-
-void ft_quick_sort(char **arr,int low, int high)
-{
-	char *hold;
-   	int hold2;
-	//printf("im here");
-	if (low < high)
-	{
-		
-		//printf("im here2");
-		hold = arr[high];
-		//printf("%s" , hold);
-		hold2 = loop( arr ,hold,low, high);
-		ft_quick_sort(arr, low, hold2 - 1);
-		ft_quick_sort(arr, hold2 + 1 , high);
-	}
-}
+#include "ft_bubble_sort.c"
 void	ft_ls(int total)
 {
 	DIR				*dir;
@@ -83,14 +40,19 @@ void	ft_ls(int total)
 			k++;
 		}
 	}
-	ft_quick_sort(arr,0,total -1);//issue here?
-	/*while (j < total)
+	ft_bubble_sort(arr, total);
+	//issue here?
+	while (j < total)
 	{
-		printf("%s \t" , arr[j]);
+		//printf("%s \t" , arr[j]);
 		j++;
-	}*/
+	}
 }
 
+void ft_heap(char ** arr, int n)
+{
+
+}
 int		ft_count(void)
 {
 	DIR				*dir;
