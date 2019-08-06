@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:55:00 by nmncube           #+#    #+#             */
-/*   Updated: 2019/08/05 16:48:47 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/08/06 16:31:25 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,10 @@ void	ft_ls(int total)
 		if (dp->d_name[0] != '.')
 		{
 			arr[k] = ft_strdup(dp->d_name);
-			//printf("%s \t" , arr[k]);
 			k++;
 		}
 	}
 	ft_bubble_sort(arr, total);
-	//issue here?
-	while (j < total)
-	{
-		//printf("%s \t" , arr[j]);
-		j++;
-	}
-}
-
-void ft_heap(char ** arr, int n)
-{
-
 }
 int		ft_count(void)
 {
@@ -73,14 +61,10 @@ int		main(int argc, char**argv)
 {
 	static int total;
 
-	//printf("zZz");
 	if (argc == 2 && argv[1][0] == 'l' && argv[1][1] == 's')
 	{
-		//printf("inside");
 		total = total + ft_count();
 		ft_ls(total);
-	}
-		//if (argc =)
-	
+	}	
 	return (0);
 }

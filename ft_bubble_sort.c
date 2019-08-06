@@ -1,64 +1,60 @@
 #include "ft_ls.h"
 
-int ft_find(char *s1, char *s2)
+int	ft_find(char *s1, char *s2)
 {
 	int k;
+	int j;
+
 	k = 0;
-	while (s1[k] != '\0' && s2[k]!= '\0')
+	j = 0;
+	while (s1[k] != '\0' || s2[j]!= '\0')
 	{
-		if(s1[k] != s2[k])
+		if (s1[k] != s2[j])
 		{
-			//printf(" s1 %s %d\n" ,s1, s1[k]);
-			//printf(" s2 %s %d\n" ,s2 ,s2[k]);
-			return (s1[k]);
+			if(s1[k] > s2[j])
+				return (s1[k]);
+			else
+				return (0);
 		}
-		k++;
+		if (s1[k] != '\0')
+			k++;
+		if (s2[j] != '\0')
+			j++;
 	}
-	return(0);
+	return (0);
 }
-void ft_swap(char **s1, char **s2)
+
+void	ft_swap(char **s1, char **s2)
 {
 	char *temp;
-	//printf("before s1 : %s\n" , *s1);
-	//printf("before s2 : %s\n" , *s2);
-	printf("----------------------\n");
+
 	temp = *s1;
 	*s1 = *s2;
 	*s2 = temp;
-	//printf("after s1: %s\n" , *s2);
-	//printf("after s2: %s\n" , *s2);
 }
 
 void ft_bubble_sort(char **arr , int n)
 {
 	int i;
 	int j;
-	int k;//not needed
-	int x;
 
-	k = 0;
-	i= 0;
-	//printf("%s" , arr[j+1]);
+	i = 0;	
 	while ( i < n -1)
 	{
-		//printf("im here1");
 		j = 0;
 		while (j < (n - i-1))
 		{
-			//printf("%s\n" , arr[j]);
-			if (ft_find(arr[j+1], arr[j]) > 0)
-			{
-				//printf("im herex");
-				ft_swap(&arr[j + 1] , &arr[j]);
-				//printf(">>Final: %s\n", arr[0]);
-			}
+			if (ft_find(arr[j], arr[j+1]) > 0)
+				ft_swap(&arr[j] , &arr[j +1]);
 			j++;
 		}
 		i++;
 	}
-	while (k < n)
+	j = 0;
+	while (j < n)
 	{
-		printf("%s\n" , arr[k]);
-		k++;
+		ft_putstr(arr[j]);
+		ft_putchar('\t');
+		j++;
 	}
 }
