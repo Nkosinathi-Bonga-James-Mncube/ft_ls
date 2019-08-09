@@ -14,10 +14,13 @@
 # define FL_LS
 #include "libft/libft.h"
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <string.h>
 #include <dirent.h>
 #include <stdlib.h>
+#include <fcntl.h>
 
 void ft_ls(char *s1);
 void ft_bubble_sort(char **arr , int n);
+void ft_details(char **arr);
 #endif

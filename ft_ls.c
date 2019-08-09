@@ -13,7 +13,8 @@
 #include "ft_ls.h"
 #include <dirent.h>//if I remove this , the program doesnt work?
 #include "libft/libft.h"
-#include "ft_bubble_sort.c"
+#include "ft_bubble_sort.c"//shouldn't be here!
+#include "ft_details.c"//shouldn't be here!
 void	ft_ls(int total)
 {
 	DIR				*dir;
@@ -40,6 +41,7 @@ void	ft_ls(int total)
 		}
 	}
 	ft_bubble_sort(arr, total);
+	ft_details(arr);
 }
 int		ft_count(void)
 {
