@@ -6,12 +6,12 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 11:03:18 by nmncube           #+#    #+#             */
-/*   Updated: 2019/08/05 14:52:54 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/08/12 15:39:32 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifdef FT_LS
-# define FL_LS
+#ifndef FT_LS_H
+# define FT_LS_H
 #include "libft/libft.h"
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -19,8 +19,11 @@
 #include <dirent.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include <grp.h>
+#include <pwd.h>
+#include <uuid/uuid.h>
 
-void ft_ls(char *s1);
+void ft_ls(int total);
 void ft_bubble_sort(char **arr , int n);
 void ft_details(char **arr);
 #endif

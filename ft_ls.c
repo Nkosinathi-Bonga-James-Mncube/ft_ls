@@ -6,13 +6,12 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:55:00 by nmncube           #+#    #+#             */
-/*   Updated: 2019/08/06 16:31:25 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/08/12 13:01:59 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-#include <dirent.h>//if I remove this , the program doesnt work?
-#include "libft/libft.h"
+//#include "libft/libft.h"
 #include "ft_bubble_sort.c"//shouldn't be here!
 #include "ft_details.c"//shouldn't be here!
 void	ft_ls(int total)
