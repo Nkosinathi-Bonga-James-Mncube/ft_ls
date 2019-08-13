@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 11:03:18 by nmncube           #+#    #+#             */
-/*   Updated: 2019/08/12 15:39:32 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/08/13 16:08:41 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <grp.h>
+#include <time.h>
 #include <pwd.h>
 #include <uuid/uuid.h>
 
