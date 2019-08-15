@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 11:03:18 by nmncube           #+#    #+#             */
-/*   Updated: 2019/08/13 16:08:41 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/08/15 12:50:15 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@
 
 void ft_ls(int total);
 void ft_bubble_sort(char **arr , int n);
-void ft_details(char **arr);
+void ft_details(char **arr,int total);
+void ft_mod(char **arr , int total);
 #endif

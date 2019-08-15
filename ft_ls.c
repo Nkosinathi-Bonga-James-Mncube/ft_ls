@@ -6,12 +6,12 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:55:00 by nmncube           #+#    #+#             */
-/*   Updated: 2019/08/12 13:01:59 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/08/15 12:47:24 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-//#include "libft/libft.h"
+#include "ft_mod.c"
 #include "ft_bubble_sort.c"//shouldn't be here!
 #include "ft_details.c"//shouldn't be here!
 void	ft_ls(int total)
@@ -40,7 +40,8 @@ void	ft_ls(int total)
 		}
 	}
 	ft_bubble_sort(arr, total);
-	ft_details(arr);
+	ft_details(arr, total);
+	ft_mod(arr, total);
 }
 int		ft_count(void)
 {
