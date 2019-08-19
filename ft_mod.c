@@ -22,18 +22,20 @@ void ft_mod(char **arr, int total)
 	{
 		
 		//struct stat b1 {0};
-		stat((void*)(*(arr++)), &b1);
-		//printf("%s" , (void*)(*(arr++)));
+		stat(arr[i], &b1);
+		printf("%s\n" , arr[i]);
 		//b2 = getgrgid(b1.st_gid);
 		//hold = ctime(&b1.st_mtime);
-		ft_date(b1, i);
+		//ft_date(b1, i);
 		//struct stat b1;
-		//printf("%ld\n" , time(&b1.st_mtime));
+		printf("%ld\n" , b1.st_mtime);
+		printf("%s\n" ,ctime(&b1.st_mtime));
+		printf("-----------\n");
 		//printf("\n%ld->\n" , seconds);
 		//seconds = time((char*)ctime(&b1.st_mtime));
 		//ft_putstr(ctime(&b1.st_mtime));
 		i++;
-		printf("\nvalue :%lld\n" , b1.st_size);
+		//printf("\nvalue :%lld\n" , b1.st_size);
 	}
 
 }
