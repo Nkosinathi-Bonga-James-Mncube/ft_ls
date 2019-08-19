@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:55:00 by nmncube           #+#    #+#             */
-/*   Updated: 2019/08/15 12:47:24 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/08/19 13:23:24 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_ls(int total)
 	ft_details(arr, total);
 	ft_mod(arr, total);
 }
+
 int		ft_count(void)
 {
 	DIR				*dir;
