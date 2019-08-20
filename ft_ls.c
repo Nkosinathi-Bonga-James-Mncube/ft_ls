@@ -6,14 +6,14 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:55:00 by nmncube           #+#    #+#             */
-/*   Updated: 2019/08/19 13:23:24 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/08/20 17:09:15 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 #include "ft_mod.c"
-#include "ft_bubble_sort.c"//shouldn't be here!
-#include "ft_details.c"//shouldn't be here!
+#include "ft_bubble_sort.c"//shouldn't be here?!
+#include "ft_details.c"//shouldn't be here?!
 void	ft_ls(int total)
 {
 	DIR				*dir;
@@ -22,7 +22,7 @@ void	ft_ls(int total)
 	struct dirent	*dp;
 	char			**arr;
 
-	dir = opendir(".");
+	dir = opendir("libft/");//orginal->opendir(".");
 	k = 0;
 	j = 0;
 	if (dir == NULL)
@@ -47,23 +47,25 @@ void	ft_ls(int total)
 int		ft_count(void)
 {
 	DIR				*dir;
-	static int		k;
+	int		k;
 	struct dirent	*dp;
 
-	dir = opendir(".");
+	dir = opendir("libft/");
 	k = 0;
 	while ((dp = readdir(dir)) != NULL)
 	{
 		if (dp->d_name[0] != '.')
 			k++;
 	}
+	printf(">>%d\n" , k);
 	return (k);
 }
 
 int		main(int argc, char**argv)
 {
-	static int total;
+	int total;
 
+	total = 0;
 	if (argc == 2 && argv[1][0] == 'l' && argv[1][1] == 's')
 	{
 		total = total + ft_count();

@@ -32,7 +32,7 @@ void ft_details(char **arr, int total)
 	while (i < total)
 	{
 		ft_putchar('\n');
-		stat(arr[i],&b);
+		stat(ft_strjoin("libft/", arr[i]),&b);
 		//ft_permission(b);
 		b1 = getgrgid(b.st_gid);
 		b2 = getpwuid(b.st_uid);
