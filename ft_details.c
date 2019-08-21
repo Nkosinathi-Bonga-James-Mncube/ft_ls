@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_details.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/21 10:14:21 by nmncube           #+#    #+#             */
+/*   Updated: 2019/08/21 10:16:36 by nmncube          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "ft_ls.h"
 
 //void 
@@ -33,7 +44,6 @@ void ft_details(char **arr, int total)
 	{
 		ft_putchar('\n');
 		stat(ft_strjoin("libft/", arr[i]),&b);
-		//ft_permission(b);
 		b1 = getgrgid(b.st_gid);
 		b2 = getpwuid(b.st_uid);
 		ft_putnbr(b.st_nlink);

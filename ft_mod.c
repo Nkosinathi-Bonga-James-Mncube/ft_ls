@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 12:09:15 by nmncube           #+#    #+#             */
-/*   Updated: 2019/08/20 12:09:45 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/08/21 09:58:42 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	ft_bubble_sort1(char **arr, int n)
 		j = 0;
 		while (j < (n - i - 1))
 		{
-			stat(arr[j], &b1);
-			stat(arr[j + 1], &b2);
+			stat(ft_strjoin("libft/",arr[j]), &b1);
+			stat(ft_strjoin("libft/",arr[j + 1]), &b2);
 			if (ft_find1(arr[j], arr[j + 1] ,b1 , b2) > 0)
 				ft_swap1(&arr[j], &arr[j + 1]);
 			j++;
