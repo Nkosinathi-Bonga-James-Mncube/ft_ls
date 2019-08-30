@@ -33,7 +33,7 @@ void	ft_swap(char **s1, char **s2)
 	*s2 = temp;
 }
 
-void ft_bubble_sort(char **arr , int n)
+void ft_bubble_sort(char **arr , int n,int bfound)
 {
 	int i;
 	int j;
@@ -51,10 +51,5 @@ void ft_bubble_sort(char **arr , int n)
 		i++;
 	}
 	j = 0;
-	while (j < n)
-	{
-		ft_putstr(arr[j]);
-		ft_putchar('\t');
-		j++;
-	}
+	ft_display(arr,n,bfound);
 }

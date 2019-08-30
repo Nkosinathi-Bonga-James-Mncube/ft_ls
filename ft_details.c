@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 10:14:21 by nmncube           #+#    #+#             */
-/*   Updated: 2019/08/21 10:16:36 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/08/30 14:51:41 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_ls.h"
@@ -32,18 +32,16 @@
 	ft_putchar('\t');
 }*/
 
-void ft_details(char **arr, int total)
+void ft_output(char **arr, int total,int bfound,int j)
 {
 	struct stat b;
 	struct group *b1;
 	struct passwd *b2;
-	int i;
 
-	i = 0;
-	while (i < total)
+	while (total > 0)
 	{
 		ft_putchar('\n');
-		stat(ft_strjoin("libft/", arr[i]),&b);
+		stat(ft_strjoin("libft/", arr[j]),&b);
 		b1 = getgrgid(b.st_gid);
 		b2 = getpwuid(b.st_uid);
 		ft_putnbr(b.st_nlink);
@@ -56,7 +54,18 @@ void ft_details(char **arr, int total)
 		ft_putchar ('\t');
 		ft_putstr(ft_strsub(ctime(&b.st_mtime),4,12));
 		ft_putchar('\t');
-		ft_putstr(arr[i]);
-		i++;
+		ft_putstr(arr[j]);
+		bfound == 1? j--:j++; 
+		total--;
 	}
 }
+
+void ft_details(char **arr, int total,int bfound)
+{
+	int j;
+
+	j = 0;
+	if (bfound == 1)
+		j = total-1;
+	ft_output(arr, total,bfound,j);	
+}	
