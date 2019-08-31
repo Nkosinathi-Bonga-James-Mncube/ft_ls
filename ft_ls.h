@@ -24,7 +24,18 @@
 #include <pwd.h>
 #include <uuid/uuid.h>
 
-void ft_ls(int total);
+typedef struct options
+{
+	int l;
+	int a;
+	int t;
+	int r;
+	int R;
+}flags;
+
+char **ft_array(int bfound);
+int ft_count(int bfound);
+void ft_options(int c,char **argc);
 void ft_bubble_sort(char **arr , int n,int bfound);
 void ft_details(char **arr,int total,int bfound);
 void ft_mod(char **arr , int total);

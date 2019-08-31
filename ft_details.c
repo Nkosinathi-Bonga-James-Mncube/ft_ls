@@ -11,26 +11,21 @@
 /* ************************************************************************** */
 #include "ft_ls.h"
 
-//void 
-/*void ft_permission1(struct stat b)
+ 
+void ft_permission1(struct stat b)
 {
-	if (S_ISDIR(b.st_mode))
-		ft_putstr("d");
-	else
-		ft_putchar('-');
-
-	if (b.st_mode & S_IRUSR)
-		ft_putstr("r");
-	else
-		ft_putchar('-');
-
-	if (b.st_mode & S_IWUSR)
-		ft_putchar('w');
-	else
-		ft_putchar('-');
-
+	ft_putstr((S_ISDIR(b.st_mode))  ? "d" : "-");
+	ft_putstr((b.st_mode & S_IRUSR) ? "r" : "-");
+	ft_putstr((b.st_mode & S_IWUSR) ? "w" : "-");
+	ft_putstr((b.st_mode & S_IXUSR) ? "x" : "-");
+	ft_putstr((b.st_mode & S_IRGRP) ? "r" : "-");
+	ft_putstr((b.st_mode & S_IWGRP) ? "w" : "-");
+	ft_putstr((b.st_mode & S_IXGRP) ? "x" : "-");
+	ft_putstr((b.st_mode & S_IROTH) ? "r" : "-");
+	ft_putstr((b.st_mode & S_IWOTH) ? "w" : "-");
+	ft_putstr((b.st_mode & S_IXOTH) ? "x" : "-");
 	ft_putchar('\t');
-}*/
+}
 
 void ft_output(char **arr, int total,int bfound,int j)
 {
@@ -44,6 +39,7 @@ void ft_output(char **arr, int total,int bfound,int j)
 		stat(ft_strjoin("libft/", arr[j]),&b);
 		b1 = getgrgid(b.st_gid);
 		b2 = getpwuid(b.st_uid);
+		ft_permission1(b);
 		ft_putnbr(b.st_nlink);
 		ft_putchar('\t');
 		ft_putstr(b2->pw_name);

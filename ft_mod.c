@@ -27,7 +27,8 @@ int		ft_find1(char *s1, char *s2, struct stat b1, struct stat b2)
 			{
 				if (b1.st_mtime == b2.st_mtime)
 				{
-					if (b1.st_mtimespec.tv_nsec <= b2.st_mtimespec.tv_nsec)
+					if (b1.st_mtimespec.tv_nsec 
+							<= b2.st_mtimespec.tv_nsec)
 						return(s2[j]);
 				}
 				else
