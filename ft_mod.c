@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 12:09:15 by nmncube           #+#    #+#             */
-/*   Updated: 2019/08/21 09:58:42 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/09/01 13:37:38 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_swap1(char **s1, char **s2)
 	*s2 = temp;
 }
 
-void	ft_bubble_sort1(char **arr, int n)
+char **ft_mod(char **arr, int n)
 {
 	int i;
 	int j;
@@ -70,20 +70,5 @@ void	ft_bubble_sort1(char **arr, int n)
 		}
 		i++;
 	}
-	/////////////////////////////////////
-	j = 0;
-	printf("%s" , "\n-----------\n");
-	while (j < n)
-	{
-		//stat(arr[j], &b1);
-		ft_putstr(arr[j]);
-		ft_putchar('\n');
-		j++;
-	}
-}
-void ft_mod(char **arr, int total)
-{
-	printf("\n");	
-	ft_bubble_sort1(arr,total);
-
+	return (arr);
 }

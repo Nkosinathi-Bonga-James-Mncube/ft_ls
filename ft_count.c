@@ -10,11 +10,12 @@ int             ft_count(int bfound)
 	k = 0;
 	while ((dp = readdir(dir)) != NULL)
 	{
-		if (dp->d_name[0] != '.' && bfound == 0)//if (dp->dname[0] && flags->a != 1)
+		if (dp->d_name[0] != '.' && bfound != 1)
 			k++;
 		if (bfound == 1)
 			k++;
 	}
-	free(dir);
+	printf("counter :%d\n" , k);//delete
+	//free(dir);
 	return (k);
 }

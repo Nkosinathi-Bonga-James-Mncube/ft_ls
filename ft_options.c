@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 16:51:19 by nmncube           #+#    #+#             */
-/*   Updated: 2019/08/30 13:36:08 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/09/01 15:23:39 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_ls.h"
@@ -15,31 +15,39 @@ void ft_flag(int bfound ,struct options *flags)
 {
 	char **s1;
 	int k;
-
+	//-a done //-r done//-l done // -t done
 	k = ft_count(flags->a);
-	printf("count : %d\n",k);
-	s1 = ft_array(flags->a);
+	//s1 = ft_array(flags->a);
+	s1 = ft_bubble_sort(ft_array(flags->a),k);
+	
 	if (flags->R == 1)
 		ft_putstr("-R actived\n");
 	if (flags->a == 1)
 		ft_putstr("-a activated \n");
 	if (flags->t == 1)
+	{
+		s1 = ft_mod(s1,k);
 		ft_putstr("-t activated\n");
+	}
 	if (flags->r == 1)
 		ft_putstr("-r activated\n");
 	if (flags->l == 1)
+	{
 		ft_putstr("-l view Display\n");
+		ft_details(s1, k,flags->r);
+	}
 	if (flags->l != 1 || bfound == -1)
 	{
 		ft_putstr("-Display in standard output\n");
+		//ft_bubble_sort(ft_array(flags->a),k,flags->r);
 		ft_display(s1,k,flags->r);
 	}
 	//ft_putnbr(k);
-	while (k >= 0)
+	/*while (k >= 0)
 	{
 		free(s1[k]);
 		k--;
-	}
+	}*/
 	//ft_array() + ft_bubble_sort();// -a
 	//ft_display();//-r + normal
 	//ft_mod();// -t
