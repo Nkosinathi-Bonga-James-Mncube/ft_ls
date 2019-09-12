@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 11:03:18 by nmncube           #+#    #+#             */
-/*   Updated: 2019/09/01 13:05:21 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/09/12 10:32:34 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ typedef struct options
 	int R;
 }flags;
 
-char **ft_array(int bfound);
-int ft_count(int bfound);
-void ft_options(int c,char **argc);
+char **ft_array(char *folder,int bfound);
+int ft_count(char *folder,int bfound);
+void ft_options(char *folder,int c,char **argc);
 char **ft_bubble_sort(char **arr , int n);
-void ft_details(char **arr,int total,int bfound);
-char **ft_mod(char **arr , int total);
+void ft_details(char *folder,char **arr,int total,int bfound);
+char **ft_mod(char *folder,char **arr , int total);
 void ft_display(char **arr,int total,int bfound);
 #endif

@@ -6,19 +6,19 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 16:51:19 by nmncube           #+#    #+#             */
-/*   Updated: 2019/09/01 15:23:39 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/09/12 16:27:37 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_ls.h"
 
-void ft_flag(int bfound ,struct options *flags)
+void ft_flag(char *folder ,int bfound ,struct options *flags)
 {
 	char **s1;
 	int k;
 	//-a done //-r done//-l done // -t done
-	k = ft_count(flags->a);
+	k = ft_count(folder,flags->a);
 	//s1 = ft_array(flags->a);
-	s1 = ft_bubble_sort(ft_array(flags->a),k);
+	s1 = ft_bubble_sort(ft_array(folder,flags->a),k);
 	
 	if (flags->R == 1)
 		ft_putstr("-R actived\n");
@@ -26,7 +26,7 @@ void ft_flag(int bfound ,struct options *flags)
 		ft_putstr("-a activated \n");
 	if (flags->t == 1)
 	{
-		s1 = ft_mod(s1,k);
+		s1 = ft_mod(folder,s1,k);
 		ft_putstr("-t activated\n");
 	}
 	if (flags->r == 1)
@@ -34,7 +34,7 @@ void ft_flag(int bfound ,struct options *flags)
 	if (flags->l == 1)
 	{
 		ft_putstr("-l view Display\n");
-		ft_details(s1, k,flags->r);
+		ft_details(folder, s1, k,flags->r);
 	}
 	if (flags->l != 1 || bfound == -1)
 	{
@@ -56,7 +56,7 @@ void ft_flag(int bfound ,struct options *flags)
 	//free(flags);//do I need this?
 }
 
-void	ft_bfound(int bfound,struct options *flags)
+void	ft_bfound(char *folder,int bfound,struct options *flags)
 {
 	if (bfound == 0)
 	{
@@ -70,7 +70,7 @@ void	ft_bfound(int bfound,struct options *flags)
 	if (bfound > 0)
 		ft_putstr("Issue\n");
 	else
-		ft_flag(bfound,flags);
+		ft_flag(folder,bfound,flags);
 }
 
 int ft_check(char c1,char c2 , struct options *flags)
@@ -97,7 +97,7 @@ int ft_check(char c1,char c2 , struct options *flags)
 //Issue with --
 //Issue with -a-a- --
 //Issue with ls - 
-void ft_options(int c,char **arr1)
+void ft_options(char *folder,int c,char **arr1)
 {
 	int k;
 	int j;
@@ -121,6 +121,6 @@ void ft_options(int c,char **arr1)
 	}
 	if (arr1[1] && arr1[1][0] == '-' && arr1[1][1] == '-' && bfound == 1)
 		bfound = 0; 
-	ft_bfound(bfound, owner);
+	ft_bfound(folder,bfound, owner);
 	free(owner);//<- RESTORE this!!!
 }

@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 12:09:15 by nmncube           #+#    #+#             */
-/*   Updated: 2019/09/01 13:37:38 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/09/12 10:31:13 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,23 @@ void	ft_swap1(char **s1, char **s2)
 	*s2 = temp;
 }
 
-char **ft_mod(char **arr, int n)
+char **ft_mod(char *folder,char **arr, int n)
 {
 	int i;
 	int j;
 	struct stat b1;
 	struct stat b2;
+	char *s3;
 
 	i = 0;
+	s3 = ft_strjoin(folder,"/");
 	while (i < n - 1)
 	{
 		j = 0;
 		while (j < (n - i - 1))
 		{
-			stat(ft_strjoin("libft/",arr[j]), &b1);
-			stat(ft_strjoin("libft/",arr[j + 1]), &b2);
+			stat(s3, &b1);
+			stat(s3, &b2);
 			if (ft_find1(arr[j], arr[j + 1] ,b1 , b2) > 0)
 				ft_swap1(&arr[j], &arr[j + 1]);
 			j++;

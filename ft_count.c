@@ -1,12 +1,20 @@
 #include "ft_ls.h"
 
-int             ft_count(int bfound)
+int             ft_count(char *folder,int bfound)
 {
 	DIR             *dir;
 	int             k;
 	struct	dirent *dp;
+	//char **hold3;//remove
 
-	dir = opendir("libft/");
+	//hold3 = (char**)malloc(1 *sizeof(char));//remove
+	dir = opendir(folder);
+	if (dir == NULL)
+	{
+		//dir = opendir(".");		
+		ft_putstr("Cannot open\n");
+		exit(1);
+	}
 	k = 0;
 	while ((dp = readdir(dir)) != NULL)
 	{

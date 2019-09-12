@@ -8,9 +8,28 @@
 #include "ft_count.c"
 int main(int argc,char **argv)
 {
-	//char **here;
-	ft_options(argc,argv);
-	//here = ft_array(0);
-	//free(here);
+	//ls - -l .
+	int k;
+	int i;
+	char *folder;
+	k = 1;
+	i = 1;
+	
+	while (argv[i] && argv[i][0] == '-' && argv[i][1] != '\0')
+	{
+		i++;
+		k++;
+	}
+	if (argv[i] != NULL)
+	{
+		while (argv[i])
+		{
+			folder = argc == 1? ".":argv[i];
+			ft_options(folder,k,argv);
+			i++;
+		}
+	}
+	else
+		ft_options(".",k,argv);
 	return(0);
 }

@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 10:14:21 by nmncube           #+#    #+#             */
-/*   Updated: 2019/08/30 14:51:41 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/09/12 14:47:33 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_ls.h"
@@ -27,16 +27,18 @@ void ft_permission1(struct stat b)
 	ft_putchar('\t');
 }
 
-void ft_output(char **arr, int total,int bfound,int j)
+void ft_output(char *folder,char **arr, int total,int bfound,int j) // <- ONLY use 4 varibles - move j and break up function
 {
 	struct stat b;
 	struct group *b1;
 	struct passwd *b2;
-
+	char *s3;
+	
+	s3 = ft_strjoin(folder,"/");
 	while (total > 0)
 	{
 		ft_putchar('\n');
-		stat(ft_strjoin("libft/", arr[j]),&b);
+		stat(ft_strjoin(s3, arr[j]),&b);
 		b1 = getgrgid(b.st_gid);
 		b2 = getpwuid(b.st_uid);
 		ft_permission1(b);
@@ -56,12 +58,12 @@ void ft_output(char **arr, int total,int bfound,int j)
 	}
 }
 
-void ft_details(char **arr, int total,int bfound)
+void ft_details(char *folder,char **arr, int total,int bfound)
 {
 	int j;
 
 	j = 0;
 	if (bfound == 1)
 		j = total-1;
-	ft_output(arr, total,bfound,j);	
+	ft_output(folder,arr, total,bfound,j);	
 }	
