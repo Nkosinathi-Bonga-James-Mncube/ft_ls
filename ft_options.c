@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 16:51:19 by nmncube           #+#    #+#             */
-/*   Updated: 2019/09/12 16:27:37 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/09/17 16:02:04 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_ls.h"
@@ -15,45 +15,15 @@ void ft_flag(char *folder ,int bfound ,struct options *flags)
 {
 	char **s1;
 	int k;
-	//-a done //-r done//-l done // -t done
+
 	k = ft_count(folder,flags->a);
-	//s1 = ft_array(flags->a);
-	s1 = ft_bubble_sort(ft_array(folder,flags->a),k);
-	
-	if (flags->R == 1)
-		ft_putstr("-R actived\n");
-	if (flags->a == 1)
-		ft_putstr("-a activated \n");
+	s1 = ft_bubble_sort(ft_array(folder,flags->a),k);	
 	if (flags->t == 1)
-	{
 		s1 = ft_mod(folder,s1,k);
-		ft_putstr("-t activated\n");
-	}
-	if (flags->r == 1)
-		ft_putstr("-r activated\n");
 	if (flags->l == 1)
-	{
-		ft_putstr("-l view Display\n");
 		ft_details(folder, s1, k,flags->r);
-	}
 	if (flags->l != 1 || bfound == -1)
-	{
-		ft_putstr("-Display in standard output\n");
-		//ft_bubble_sort(ft_array(flags->a),k,flags->r);
-		ft_display(s1,k,flags->r);
-	}
-	//ft_putnbr(k);
-	/*while (k >= 0)
-	{
-		free(s1[k]);
-		k--;
-	}*/
-	//ft_array() + ft_bubble_sort();// -a
-	//ft_display();//-r + normal
-	//ft_mod();// -t
-	//ft_details(); // -l
-	//ft_bubble_sort();
-	//free(flags);//do I need this?
+		ft_display(folder,s1,k,flags->r);
 }
 
 void	ft_bfound(char *folder,int bfound,struct options *flags)
@@ -93,10 +63,7 @@ int ft_check(char c1,char c2 , struct options *flags)
 				return(1);
 	return (0);
 }
-//Issue with l s
-//Issue with --
-//Issue with -a-a- --
-//Issue with ls - 
+
 void ft_options(char *folder,int c,char **arr1)
 {
 	int k;
