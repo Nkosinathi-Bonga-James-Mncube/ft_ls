@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 10:14:21 by nmncube           #+#    #+#             */
-/*   Updated: 2019/09/17 17:00:05 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/09/18 17:02:42 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_ls.h"
@@ -40,7 +40,7 @@ void ft_output2(struct group *b1,struct passwd *b2,struct stat b,char *arr)
 		ft_putchar('\t');
 		ft_putnbr(b.st_size);
 		ft_putchar ('\t');
-		ft_putstr(ft_strsub(ctime(&b.st_mtime),4,12));
+		ft_putstr(ft_strsub(ctime(&b.st_mtime),4,12));//memalloced//
 		ft_putchar('\t');
 		ft_putstr(arr);
 }
@@ -74,27 +74,25 @@ void ft_details(char *folder,char **arr, int total,int bfound)
 	int k;
 	int b;
 	struct stat x;
-
-	k = 0;
+	k = -1;
 	stat(folder,&x);
 	b = S_ISDIR(x.st_mode)?0: 1;
+	//printf("%s",ft_strstr(folder++, "/"));
 	if (b == 1)
 	{
-		while (k < total)
+		while (++k < total)
 		{
-			if (ft_strcmp(folder,arr[k]) == 0)
-			{
-				b = 1;
+			b = ft_strcmp(folder,arr[k]) == 0?1:-1;
+			if (b == 1)
 				break ;
-			}
-			k++;
-			b--;
 		}
 	}
-	//b = ft_strcmp(folder, "/") == 0 ? 1: b;
+	//b = 1;
 	if (b == 0)
 		ft_output(folder,arr, total,bfound);
 	else
 		if (b == 1)
 			ft_output(folder,&folder, 1,bfound);
+		else
+			ft_putstr("ls :No such file or directory\n");
 }	
