@@ -6,6 +6,7 @@
 #include "ft_details.c"
 #include "ft_array.c"
 #include "ft_count.c"
+#include "ft_dir_search.c"
 int main(int argc,char **argv)
 {
 	//ls - -l .

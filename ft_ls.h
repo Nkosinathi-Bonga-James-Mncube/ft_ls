@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 11:03:18 by nmncube           #+#    #+#             */
-/*   Updated: 2019/09/17 16:07:15 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/09/19 16:58:31 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ char **ft_bubble_sort(char **arr , int n);
 void ft_details(char *folder,char **arr,int total,int bfound);
 char **ft_mod(char *folder,char **arr , int total);
 void ft_display(char *folder,char **arr,int total,int bfound);
+void ft_dir_search(char *folder,char **y,int *b);
 #endif

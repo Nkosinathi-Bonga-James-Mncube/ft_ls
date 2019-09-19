@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 10:14:21 by nmncube           #+#    #+#             */
-/*   Updated: 2019/09/18 17:02:42 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/09/19 17:06:10 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_ls.h"
@@ -73,21 +73,25 @@ void ft_details(char *folder,char **arr, int total,int bfound)
 {
 	int k;
 	int b;
+	char *y;
 	struct stat x;
+	
 	k = -1;
 	stat(folder,&x);
 	b = S_ISDIR(x.st_mode)?0: 1;
-	//printf("%s",ft_strstr(folder++, "/"));
+	if (ft_strchr(folder, '/') != 0)//
+		ft_dir_search(folder,&y,&b);//
+	else//
+		y = folder;// uturnary method;
 	if (b == 1)
 	{
 		while (++k < total)
 		{
-			b = ft_strcmp(folder,arr[k]) == 0?1:-1;
+			b = ft_strcmp(y,arr[k]) == 0?1:-1;
 			if (b == 1)
 				break ;
 		}
 	}
-	//b = 1;
 	if (b == 0)
 		ft_output(folder,arr, total,bfound);
 	else
