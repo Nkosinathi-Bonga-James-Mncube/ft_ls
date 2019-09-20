@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 10:14:21 by nmncube           #+#    #+#             */
-/*   Updated: 2019/09/19 17:06:10 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/09/20 17:03:31 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_ls.h"
@@ -66,7 +66,7 @@ void ft_output(char *folder,char **arr, int total,int bfound)
 		bfound == 1? j--:j++; 
 		total--;
 	}
-	ft_putstr("\n");
+	//ft_putstr("\n");
 }
 
 void ft_details(char *folder,char **arr, int total,int bfound)
@@ -79,9 +79,9 @@ void ft_details(char *folder,char **arr, int total,int bfound)
 	k = -1;
 	stat(folder,&x);
 	b = S_ISDIR(x.st_mode)?0: 1;
-	if (ft_strchr(folder, '/') != 0)//
+	if (ft_strchr(folder, '/') != 0 && folder[0]!= '/')//
 		ft_dir_search(folder,&y,&b);//
-	else//
+	else
 		y = folder;// uturnary method;
 	if (b == 1)
 	{
@@ -98,5 +98,5 @@ void ft_details(char *folder,char **arr, int total,int bfound)
 		if (b == 1)
 			ft_output(folder,&folder, 1,bfound);
 		else
-			ft_putstr("ls :No such file or directory\n");
+			ft_putstr("\nls :No such file or directory\n");
 }	

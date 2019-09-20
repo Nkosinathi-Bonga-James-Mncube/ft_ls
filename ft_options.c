@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 16:51:19 by nmncube           #+#    #+#             */
-/*   Updated: 2019/09/17 16:02:04 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/09/20 16:57:48 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_ls.h"
@@ -26,7 +26,7 @@ void ft_flag(char *folder ,int bfound ,struct options *flags)
 		ft_display(folder,s1,k,flags->r);
 }
 
-void	ft_bfound(char *folder,int bfound,struct options *flags)
+void	ft_bfound(char *folder,int bfound,struct options *flags,char *arr1)
 {
 	if (bfound == 0)
 	{
@@ -38,7 +38,12 @@ void	ft_bfound(char *folder,int bfound,struct options *flags)
 	else
 		bfound = 1;	
 	if (bfound > 0)
-		ft_putstr("Issue\n");
+	{
+		ft_putstr("ls : illegal option ");
+		ft_putstr(arr1);
+		ft_putchar('\n');
+		ft_putstr("usage :ls [-atlr] [file ...]");
+	}
 	else
 		ft_flag(folder,bfound,flags);
 }
@@ -88,6 +93,6 @@ void ft_options(char *folder,int c,char **arr1)
 	}
 	if (arr1[1] && arr1[1][0] == '-' && arr1[1][1] == '-' && bfound == 1)
 		bfound = 0; 
-	ft_bfound(folder,bfound, owner);
+	ft_bfound(folder,bfound, owner,arr1[1]);
 	free(owner);//<- RESTORE this!!!
 }
