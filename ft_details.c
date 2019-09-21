@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 10:14:21 by nmncube           #+#    #+#             */
-/*   Updated: 2019/09/20 17:03:31 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/09/21 15:41:07 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_ls.h"
@@ -60,16 +60,17 @@ void ft_output(char *folder,char **arr, int total,int bfound)
 	s3 = S_ISDIR(b.st_mode)?ft_strjoin(folder,"/"):ft_strjoin("./",folder);
 	while (total > 0)
 	{
-		ft_putchar('\n');
 		stat(ft_strjoin(s3, arr[j]),&b);
+		ft_putchar('\n');
 		ft_output2(b1,b2,b,arr[j]);
 		bfound == 1? j--:j++; 
 		total--;
 	}
-	//ft_putstr("\n");
+	if (ft_arv_count(NULL) > 1 && S_ISDIR(b.st_mode) && total == 0)
+		ft_putstr("\n\n");
 }
 
-void ft_details(char *folder,char **arr, int total,int bfound)
+void ft_details(char *folder,char **arr, int total,int bfound)//break up
 {
 	int k;
 	int b;
@@ -79,7 +80,7 @@ void ft_details(char *folder,char **arr, int total,int bfound)
 	k = -1;
 	stat(folder,&x);
 	b = S_ISDIR(x.st_mode)?0: 1;
-	if (ft_strchr(folder, '/') != 0 && folder[0]!= '/')//
+	if (ft_strchr(folder, '/') != 0 && ft_s(folder) == 0)//
 		ft_dir_search(folder,&y,&b);//
 	else
 		y = folder;// uturnary method;

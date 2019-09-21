@@ -14,9 +14,9 @@ void ft_dir_check2(char *folder,DIR **dir)
 			*dir = opendir(ft_strsub(folder,0,k));
 		else 
 		{
-			ft_putstr("ls :\n");
-			ft_putstr(ft_strsub(folder,0,k));
-			ft_putstr("No such file or directory");
+			ft_putstr("ls: ");
+			ft_putstr(folder);
+			ft_putstr(": No such file or directory");
 			exit(1);
 		}
 	}
