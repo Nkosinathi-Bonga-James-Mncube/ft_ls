@@ -10,6 +10,8 @@
 #include "ft_s.c"
 #include "ft_arv_count.c"
 #include "ft_folder_name.c"
+#include "ft_free.c"
+#include "ft_s3_change.c"
 int main(int argc,char **argv)
 {
 	int k;
@@ -35,5 +37,7 @@ int main(int argc,char **argv)
 	}
 	else
 		ft_options(".",k,argv);
+	while(1)
+	{}
 	return(0);
 }

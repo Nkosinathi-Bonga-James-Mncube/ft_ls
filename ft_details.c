@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 10:14:21 by nmncube           #+#    #+#             */
-/*   Updated: 2019/09/21 15:41:07 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/09/22 16:21:11 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_ls.h"
@@ -29,6 +29,7 @@ void ft_permission1(struct stat b)
 
 void ft_output2(struct group *b1,struct passwd *b2,struct stat b,char *arr)
 {
+		char *s1;
 		b1 = getgrgid(b.st_gid);
 		b2 = getpwuid(b.st_uid);
 		ft_permission1(b);
@@ -40,9 +41,11 @@ void ft_output2(struct group *b1,struct passwd *b2,struct stat b,char *arr)
 		ft_putchar('\t');
 		ft_putnbr(b.st_size);
 		ft_putchar ('\t');
-		ft_putstr(ft_strsub(ctime(&b.st_mtime),4,12));//memalloced//
+		s1 = ft_strsub(ctime(&b.st_mtime),4,12);
+		ft_putstr(s1);
 		ft_putchar('\t');
 		ft_putstr(arr);
+		free(s1);
 }
 
 void ft_output(char *folder,char **arr, int total,int bfound)
@@ -60,14 +63,18 @@ void ft_output(char *folder,char **arr, int total,int bfound)
 	s3 = S_ISDIR(b.st_mode)?ft_strjoin(folder,"/"):ft_strjoin("./",folder);
 	while (total > 0)
 	{
+		//ft_s3_change(&s3,arr[j]);
+		//tat(ft_s3_change(s3,arr, j),&b); 
 		stat(ft_strjoin(s3, arr[j]),&b);
 		ft_putchar('\n');
 		ft_output2(b1,b2,b,arr[j]);
 		bfound == 1? j--:j++; 
 		total--;
+		//free(s3);
 	}
 	if (ft_arv_count(NULL) > 1 && S_ISDIR(b.st_mode) && total == 0)
 		ft_putstr("\n\n");
+	free(s3);
 }
 
 void ft_details(char *folder,char **arr, int total,int bfound)//break up

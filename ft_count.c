@@ -41,6 +41,6 @@ int             ft_count(char *folder,int bfound)
 		if (bfound == 1)
 			k++;
 	}
-	//free(dir);
+	closedir(dir);
 	return (k);
 }

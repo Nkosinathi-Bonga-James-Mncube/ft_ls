@@ -10,7 +10,7 @@ int ft_s(char *folder)
 
 	s1 = ft_strrchr(folder, '/') +1;
 	k = s1[0] == '\0'? 1:0;
-	if (s1[0] == '.')
+	if ((s1[0] == '.' && s1[1] == '.') || (s1[0] == '.' && s1[1] == '/')) 
 		k = 1;
 	return (k);
 }

@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 12:09:15 by nmncube           #+#    #+#             */
-/*   Updated: 2019/09/13 14:16:10 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/09/22 14:29:59 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void ft_find1(char **s1, char **s2, char *s3)
 			if (b1.st_mtimespec.tv_nsec < b2.st_mtimespec.tv_nsec)
 				ft_swap1(s1, s2);
 		}
+	free(x);
+	free(y);
 }
 
 char **ft_mod(char *folder,char **arr, int n)
@@ -61,6 +63,6 @@ char **ft_mod(char *folder,char **arr, int n)
 			}
 			i++;
 		};
-		free(s3);
+	free(s3);
 	return (arr);
 }

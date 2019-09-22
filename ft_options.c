@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 16:51:19 by nmncube           #+#    #+#             */
-/*   Updated: 2019/09/21 15:39:03 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/09/22 15:45:23 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_ls.h"
@@ -15,24 +15,25 @@ void ft_flag(char *folder ,int bfound ,struct options *flags)
 {
 	char **s1;
 	int k;
-	char **ar2;
 	struct stat b;
+	char **s2;
 
 	stat(folder,&b);
-	k = ft_count(folder,flags->a);
-	s1 = ft_bubble_sort(ft_array(folder,flags->a),k);	
+	k = ft_count(folder,flags->a);// NO Leaks!
+	s1 = ft_bubble_sort(ft_array(folder,flags->a),k);//NO Leaks!	
 	if (flags->t == 1)
-		s1 = ft_mod(folder,s1,k);
+		s1 = ft_mod(folder,s1,k);// NO Leaks!
 	if (flags->l == 1)
 	{
-		ft_folder_name(flags->l,bfound,b,folder);
-		ft_details(folder, s1, k,flags->r);
+		ft_folder_name(flags->l,bfound,b,folder);// NO Leaks !
+		ft_details(folder, s1, k,flags->r); //< leak!
 	}
 	if (flags->l != 1 || bfound == -1)
 	{
-		ft_folder_name(flags->l,bfound,b,folder);
-		ft_display(folder,s1,k,flags->r);
+		ft_folder_name(flags->l,bfound,b,folder);// NO Leaks !
+		ft_display(folder,s1,k,flags->r);// NO Leaks
 	}
+	ft_free(NULL,s1,k);
 }
 
 void	ft_bfound(char *folder,int bfound,struct options *flags,char *arr1)
