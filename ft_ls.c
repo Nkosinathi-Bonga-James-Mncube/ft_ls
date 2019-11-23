@@ -37,7 +37,5 @@ int main(int argc,char **argv)
 	}
 	else
 		ft_options(".",k,argv);
-	while(1)
-	{}
 	return(0);
 }
