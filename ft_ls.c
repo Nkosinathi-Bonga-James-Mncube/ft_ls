@@ -11,7 +11,6 @@
 #include "ft_arv_count.c"
 #include "ft_folder_name.c"
 #include "ft_free.c"
-#include "ft_s3_change.c"
 int main(int argc,char **argv)
 {
 	int k;

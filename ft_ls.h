@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 11:03:18 by nmncube           #+#    #+#             */
-/*   Updated: 2019/09/22 16:12:11 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/12/01 14:55:48 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,4 @@ int ft_s(char *folder);
 int ft_arv_count(char **argv);
 void ft_folder_name(int l,int bfound, struct stat b,char *folder);
 void ft_free(char *x,char **arr,int total);
-char *ft_s3_change(char *s3, char **arr,int j);
 #endif

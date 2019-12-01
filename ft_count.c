@@ -4,14 +4,16 @@ void ft_dir_check2(char *folder,DIR **dir)
 	size_t k;
 	char *s;
 	struct stat b;
+	char *y;
 
 	k = 0;
 	if (ft_strchr(folder,'/') != 0 && folder[0] != '/')
 	{
 		k = ft_strlen(folder) - ft_strlen(ft_strrchr(folder,'/'));
-		stat(ft_strsub(folder,0,k),&b);
+		y = ft_strsub(folder,0,k);
+		stat(y,&b);
 		if (S_ISDIR(b.st_mode))
-			*dir = opendir(ft_strsub(folder,0,k));
+			*dir = opendir(y);
 		else 
 		{
 			ft_putstr("ls: ");
@@ -19,6 +21,7 @@ void ft_dir_check2(char *folder,DIR **dir)
 			ft_putstr(": No such file or directory");
 			exit(1);
 		}
+		free(y);
 	}
 	else
 		*dir = opendir(".");

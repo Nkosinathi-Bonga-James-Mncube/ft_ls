@@ -6,26 +6,27 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:55:00 by nmncube           #+#    #+#             */
-/*   Updated: 2019/09/22 14:10:32 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/12/01 13:54:53 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 #include <stdio.h>
-//REMEBER TO CLOSE DIR/FILE!!!!!!!!!!!
 void ft_dir_check(char *folder,DIR **dir)
 {
 	size_t k;
 	char *s;
 	struct stat b;
+	char *y;
 
 	k = 0;
 	if (ft_strchr(folder,'/') != 0 && folder[0] != '/')
 	{
 		k = ft_strlen(folder) - ft_strlen(ft_strrchr(folder,'/'));
-		stat(ft_strsub(folder,0,k),&b);
+		y = ft_strsub(folder,0,k); 
+		stat(y,&b);
 		if (S_ISDIR(b.st_mode))
-			*dir = opendir(ft_strsub(folder,0,k));
+			*dir = opendir(y);
 		else
 		{
 			ft_putstr("ls :\n");
@@ -33,6 +34,7 @@ void ft_dir_check(char *folder,DIR **dir)
  			ft_putstr("No such file or directory");
 			exit(1);
 		}
+		free(y);
 	}
 		else
 			*dir = opendir("."); 
