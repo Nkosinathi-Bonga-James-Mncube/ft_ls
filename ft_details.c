@@ -6,7 +6,7 @@
 /*   By: nmncube <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 10:14:21 by nmncube           #+#    #+#             */
-/*   Updated: 2019/12/15 16:36:06 by nmncube          ###   ########.fr       */
+/*   Updated: 2019/12/17 16:04:14 by nmncube          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_ls.h"
@@ -16,9 +16,9 @@ void ft_permission1(struct stat b,char *arr)
 	struct stat p;
 	int i;
 
-	lstat(arr,&p);
-	i = (p.st_mode & S_IFLNK);	
-	if (i > 0 && S_ISDIR(b.st_mode))
+	stat(arr,&p);
+	i = (b.st_mode & S_IFLNK);	
+	if (i > 0 && S_ISDIR(p.st_mode))
 		ft_putchar('l');
 	else
 		ft_putstr((S_ISDIR(b.st_mode))  ? "d" : "-");
@@ -37,9 +37,14 @@ void ft_permission1(struct stat b,char *arr)
 void ft_output2(struct stat b,char *arr)
 {
 		char *s1;
+		int i;
 		struct group *b1;
 		struct passwd *b2;
+		struct stat p;
 
+		lstat(arr,&p);
+		if ((p.st_mode & S_IFLNK) > 0 && S_ISDIR(b.st_mode))
+			b  = p;
 		b1 = getgrgid(b.st_gid);
 		b2 = getpwuid(b.st_uid);
 		ft_permission1(b,arr);
@@ -55,6 +60,9 @@ void ft_output2(struct stat b,char *arr)
 		ft_putstr(s1);
 		ft_putchar('\t');
 		ft_putstr(arr);
+		i = (b.st_mode & S_IFLNK);	
+		if (i == 40960)
+			ft_putstr(" -> ");
 		free(s1);
 }
 
