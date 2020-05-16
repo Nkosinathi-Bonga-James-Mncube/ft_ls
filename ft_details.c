@@ -43,8 +43,7 @@ void ft_output2(struct stat b,char *arr)
 		struct stat p;
 
 		lstat(arr,&p);
-		if ((p.st_mode & S_IFLNK) > 0 && S_ISDIR(b.st_mode))
-			b  = p;
+		b = ((p.st_mode & S_IFLNK) > 0 && S_ISDIR(b.st_mode)) ? p : b;
 		b1 = getgrgid(b.st_gid);
 		b2 = getpwuid(b.st_uid);
 		ft_permission1(b,arr);
@@ -63,6 +62,7 @@ void ft_output2(struct stat b,char *arr)
 		i = (b.st_mode & S_IFLNK);	
 		if (i == 40960)
 			ft_putstr(" -> ");
+			ft_symbol_link(arr);
 		free(s1);
 }
 

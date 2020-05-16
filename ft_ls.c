@@ -11,6 +11,7 @@
 #include "ft_arv_count.c"
 #include "ft_folder_name.c"
 #include "ft_free.c"
+#include "ft_symbol_link.c"
 int main(int argc,char **argv)
 {
 	int k;

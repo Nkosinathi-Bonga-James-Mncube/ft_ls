@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-#include <stdio.h>
 void ft_dir_check(char *folder,DIR **dir)
 {
 	size_t k;

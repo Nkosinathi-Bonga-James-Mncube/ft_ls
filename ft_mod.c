@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-
-
 void ft_swap1(char **s1, char **s2)
 {
 	char *temp;
@@ -27,18 +25,22 @@ void ft_find1(char **s1, char **s2, char *s3)
 	struct stat b2;
 	char *x;
 	char *y;
-
+	struct stat p;
 	
 	x = ft_strjoin(s3,*s1);
 	y = ft_strjoin(s3,*s2);
 	stat(x,&b1);
 	stat(y,&b2);
+	lstat(x, &p);
+	b1 = ((p.st_mode & S_IFLNK) > 0 && S_ISDIR(b1.st_mode)) ? p : b1;
+	lstat(y, &p);
+	b2 = ((p.st_mode & S_IFLNK) > 0 && S_ISDIR(b2.st_mode)) ? p : b2;
 	if (b1.st_mtime < b2.st_mtime)
 		ft_swap1(s1,s2);
 	else
 		if (b1.st_mtime == b2.st_mtime)
 		{
-			if (b1.st_mtimespec.tv_nsec < b2.st_mtimespec.tv_nsec)
+			if (b1.st_mtim.tv_nsec < b2.st_mtim.tv_nsec)
 				ft_swap1(s1, s2);
 		}
 	free(x);

@@ -9,9 +9,13 @@ int	ft_find(char *s1, char *s2)
 	j = 0;
 	while (s1[k] != '\0' || s2[j]!= '\0')
 	{
-		if (s1[k] != s2[j])
+		while (s1[k] == '.')
+			k++;
+		while (s2[j] == '.')
+			j++;
+		if (ft_tolower(s1[k]) != ft_tolower(s2[j]))
 		{
-			if(s1[k] > s2[j])
+			if(ft_tolower(s1[k]) >ft_tolower(s2[j]))
 				return (s1[k]);
 			else
 				return (0);
@@ -21,7 +25,6 @@ int	ft_find(char *s1, char *s2)
 		if (s2[j] != '\0')
 			j++;
 	}
-	return (0);
 }
 
 void	ft_swap(char **s1, char **s2)
@@ -39,7 +42,7 @@ char **ft_bubble_sort(char **arr , int n)
 	int j;
 
 	i = 0;	
-	while ( i < n -1)
+	while ( i <= n -1)
 	{
 		j = 0;
 		while (j < (n - i-1))

@@ -45,4 +45,5 @@ int ft_s(char *folder);
 int ft_arv_count(char **argv);
 void ft_folder_name(int l,int bfound, struct stat b,char *folder);
 void ft_free(char *x,char **arr,int total);
+void ft_symbol_link(char *arr);
 #endif
