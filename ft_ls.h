@@ -22,6 +22,7 @@
 #include <grp.h>
 #include <time.h>
 #include <pwd.h>
+#include <errno.h>
 #include <uuid/uuid.h>
 
 typedef struct options
@@ -46,4 +47,5 @@ int ft_arv_count(char **argv);
 void ft_folder_name(int l,int bfound, struct stat b,char *folder);
 void ft_free(char *x,char **arr,int total);
 void ft_symbol_link(char *arr);
+int ft_error(char *s1);
 #endif

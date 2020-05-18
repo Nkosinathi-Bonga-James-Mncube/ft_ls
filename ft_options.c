@@ -19,19 +19,19 @@ void ft_flag(char *folder ,int bfound ,struct options *flags)
 	char **s2;
 
 	stat(folder,&b);
-	k = ft_count(folder,flags->a);// NO Leaks!
-	s1 = ft_bubble_sort(ft_array(folder,flags->a),k);//NO Leaks!	
+	k = ft_count(folder,flags->a);
+	s1 = ft_bubble_sort(ft_array(folder,flags->a),k);	
 	if (flags->t == 1)
-		s1 = ft_mod(folder,s1,k);// NO Leaks!
+		s1 = ft_mod(folder,s1,k);
 	if (flags->l == 1)
 	{
-		ft_folder_name(flags->l,bfound,b,folder);// NO Leaks !
-		ft_details(folder, s1, k,flags->r); //< leak!
+		ft_folder_name(flags->l,bfound,b,folder);
+		ft_details(folder, s1, k,flags->r); 
 	}
 	if (flags->l != 1 || bfound == -1)
 	{
-		ft_folder_name(flags->l,bfound,b,folder);// NO Leaks !
-		ft_display(folder,s1,k,flags->r);// NO Leaks
+		ft_folder_name(flags->l,bfound,b,folder);
+		ft_display(folder,s1,k,flags->r);
 	}
 	ft_free(NULL,s1,k);
 }
@@ -88,6 +88,10 @@ void ft_options(char *folder,int c,char **arr1)
 
 	k = 1;
 	owner = (struct options*)malloc(sizeof(struct options));
+	owner-> l = 0;
+	owner-> r = 0;
+	owner-> t = 0;
+	owner-> a = 0;
 	while(c > 1)
 	{
 		j = 1;
@@ -104,5 +108,5 @@ void ft_options(char *folder,int c,char **arr1)
 	if (arr1[1] && arr1[1][0] == '-' && arr1[1][1] == '-' && bfound == 1)
 		bfound = 0; 
 	ft_bfound(folder,bfound, owner,arr1[1]);
-	free(owner);//<- RESTORE this!!!
+	free(owner);
 }

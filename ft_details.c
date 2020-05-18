@@ -96,7 +96,7 @@ void ft_output(char *folder,char **arr, int total,int bfound)
 	free(s3);
 }
 
-void ft_details(char *folder,char **arr, int total,int bfound)//break up
+void ft_details(char *folder,char **arr, int total,int bfound)
 {
 	int k;
 	int b;
@@ -107,9 +107,9 @@ void ft_details(char *folder,char **arr, int total,int bfound)//break up
 	stat(folder,&x);
 	b = S_ISDIR(x.st_mode)?0: 1;
 	if (ft_strchr(folder, '/') != 0 && ft_s(folder) == 0)
-		ft_dir_search(folder,&y,&b);//
+		ft_dir_search(folder,&y,&b);
 	else
-		y = folder;// uturnary method;
+		y = folder;
 	if (b == 1)
 	{
 		while (++k < total)

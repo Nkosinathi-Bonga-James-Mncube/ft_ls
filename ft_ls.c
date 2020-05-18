@@ -12,12 +12,13 @@
 #include "ft_folder_name.c"
 #include "ft_free.c"
 #include "ft_symbol_link.c"
+#include "ft_error.c"
 int main(int argc,char **argv)
 {
 	int k;
 	int i;
 	char *folder;
-	k = 1;
+
 	i = 1;
 	k =ft_arv_count(argv);
 	k = 1;
@@ -30,8 +31,8 @@ int main(int argc,char **argv)
 	{
 		while (argv[i])
 		{
-			folder = argc == 1? ".":argv[i];
-			ft_options(folder,k,argv);
+			if (ft_error(argv[i]) == 0)
+				ft_options(argv[i],k,argv);
 			i++;
 		}
 	}
