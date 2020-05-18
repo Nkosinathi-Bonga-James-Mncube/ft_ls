@@ -1,13 +1,10 @@
 #include "ft_ls.h"
 
-void ft_symbol_link(char *arr)
+void ft_symbol_link(char *arr,char *y)
 {	
-	struct stat p;
         int i;
-        int temp;
         char name[1000] = {};
-
-	readlink(arr, name, 1000);
+	readlink(y, name, 1000);
 	ft_putstr(name);
 }
 

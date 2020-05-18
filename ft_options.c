@@ -30,8 +30,8 @@ void ft_flag(char *folder ,int bfound ,struct options *flags)
 	}
 	if (flags->l != 1 || bfound == -1)
 	{
-		ft_folder_name(flags->l,bfound,b,folder);
-		ft_display(folder,s1,k,flags->r);
+		ft_folder_name(flags->l,bfound,b,folder);// NO Leaks !
+		ft_display(folder,s1,k,flags->r);// NO Leaks
 	}
 	ft_free(NULL,s1,k);
 }

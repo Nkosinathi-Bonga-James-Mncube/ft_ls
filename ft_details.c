@@ -13,12 +13,9 @@
 
 void ft_permission1(struct stat b,char *arr)
 {
-	struct stat p;
 	int i;
-
-	stat(arr,&p);
 	i = (b.st_mode & S_IFLNK);	
-	if (i > 0 && S_ISDIR(p.st_mode))
+	if (i > 0 && S_ISLNK(b.st_mode))
 		ft_putchar('l');
 	else
 		ft_putstr((S_ISDIR(b.st_mode))  ? "d" : "-");
@@ -34,7 +31,7 @@ void ft_permission1(struct stat b,char *arr)
 	ft_putchar('\t');
 }
 
-void ft_output2(struct stat b,char *arr)
+void ft_output2(struct stat b,char *arr, char *y)
 {
 		char *s1;
 		int i;
@@ -42,8 +39,6 @@ void ft_output2(struct stat b,char *arr)
 		struct passwd *b2;
 		struct stat p;
 
-		lstat(arr,&p);
-		b = ((p.st_mode & S_IFLNK) > 0 && S_ISDIR(b.st_mode)) ? p : b;
 		b1 = getgrgid(b.st_gid);
 		b2 = getpwuid(b.st_uid);
 		ft_permission1(b,arr);
@@ -60,9 +55,9 @@ void ft_output2(struct stat b,char *arr)
 		ft_putchar('\t');
 		ft_putstr(arr);
 		i = (b.st_mode & S_IFLNK);	
-		if (i == 40960)
-			ft_putstr(" -> ");
-			ft_symbol_link(arr);
+		if (i > 0 && S_ISLNK(b.st_mode))
+			{ft_putstr(" -> ");
+			ft_symbol_link(arr,y);}
 		free(s1);
 }
 
@@ -77,15 +72,15 @@ void ft_output(char *folder,char **arr, int total,int bfound)
 	j = 0;
 	if (bfound == 1)
 		j = total - 1;
-	stat(folder,&b);
+	lstat(folder,&b);
 	s3 = S_ISDIR(b.st_mode)?ft_strjoin(folder,"/"):ft_strjoin("./",folder);
 	while (total > 0)
 	{ 
 		y = ft_strjoin(s3,arr[j]);
 		hold = y;
-		stat(y,&b);
+		lstat(y,&b);
 		ft_putchar('\n');
-		ft_output2(b,arr[j]);
+		ft_output2(b,arr[j] , y);
 		ft_free(y,NULL,1);
 		bfound == 1? j--:j++; 
 		total--;
